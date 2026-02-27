@@ -1,447 +1,288 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>LIVE • HackHive</title>
-  <meta name="description" content="HackHive LIVE — Apr 3–4 at WVSU. Countdown + schedule + FAQ + resources." />
-  <style>
-    :root{
-      --bg:#0b0d12;
-      --hair: rgba(255,255,255,.10);
-      --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.65);
-      --accent:#f2c14e;
-      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-      --r: 18px;
-      --shadow: 0 18px 55px rgba(0,0,0,.55);
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>LIVE  HackHive</title>
 
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:var(--sans);
-      color:var(--text);
-      background: radial-gradient(1200px 800px at 20% 20%, rgba(242,193,78,.13), transparent 55%),
-                  radial-gradient(900px 700px at 80% 70%, rgba(125,211,252,.10), transparent 60%),
-                  linear-gradient(180deg, #070812, #0b0d12);
-    }
+<style>
+:root{
+  --bg:#0b0d12;
+  --text: rgba(255,255,255,.92);
+  --muted: rgba(255,255,255,.65);
+  --accent:#f2c14e;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --sans: ui-sans-serif, system-ui;
+  --r: 18px;
+}
 
-    /* Optional: keep background image (no logo shown on page)
-       Put image next to this HTML as: wvsu-csic-logo.png */
-    .bg{
-      position:fixed; inset:0; z-index:-2;
-      background: url("wvsu-csic-logo.png") center/cover no-repeat;
-      opacity:.10;
-      filter: contrast(1.05) saturate(1.05) brightness(.85);
-      transform: scale(1.03);
-    }
-    .bg::after{
-      content:"";
-      position:absolute; inset:0;
-      background: linear-gradient(180deg, rgba(11,13,18,.92), rgba(11,13,18,.78), rgba(11,13,18,.92));
-      backdrop-filter: blur(10px);
-    }
+*{box-sizing:border-box}
 
-    a{color:inherit; text-decoration:none}
-    a:hover{opacity:.92}
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--text);
+  background:
+    radial-gradient(1000px 700px at 20% 20%, rgba(242,193,78,.12), transparent 55%),
+    linear-gradient(180deg, #070812, #0b0d12);
+}
 
-    .wrap{max-width:1080px; margin:0 auto; padding:22px 16px 44px;}
+.wrap{
+  max-width:1000px;
+  margin:0 auto;
+  padding:30px 18px 50px;
+}
 
-    /* Top nav */
-    .top{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:14px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:10px;
-      font-weight:800;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      font-size:.92rem;
-    }
-    .brand .liveDot{
-      width:8px; height:8px; border-radius:99px;
-      background: var(--accent);
-      box-shadow: 0 0 0 6px rgba(242,193,78,.14);
-    }
-    nav{display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:flex-end;}
-    .navLink{
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid transparent;
-      color: rgba(255,255,255,.85);
-    }
-    .navLink:hover{
-      border-color: rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-    }
+/* NAV */
+.top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
 
-    /* Hero */
-    .hero{
-      margin-top: 22px;
-      border:1px solid rgba(255,255,255,.10);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      border-radius: var(--r);
-      box-shadow: var(--shadow);
-      padding: 34px 18px 26px;
-      text-align:center;
-      position:relative;
-      overflow:hidden;
-    }
-    .hero::before{
-      content:"";
-      position:absolute; inset:-2px;
-      background:
-        radial-gradient(600px 400px at 15% 20%, rgba(242,193,78,.16), transparent 60%),
-        radial-gradient(520px 420px at 85% 70%, rgba(125,211,252,.12), transparent 60%);
-      pointer-events:none;
-    }
-    .title{
-      margin: 6px 0 6px;
-      font-size: 2.2rem;
-      letter-spacing:.06em;
-      text-transform:uppercase;
-      position:relative;
-    }
-    .subtitle{
-      margin:0 auto 18px;
-      max-width: 78ch;
-      color: var(--muted);
-      line-height: 1.55;
-      position:relative;
-    }
+.brand{
+  font-weight:800;
+  letter-spacing:.12em;
+}
 
-    /* Big TreeHacks-like timer */
-    .timer{
-      font-family: var(--mono);
-      font-size: clamp(2.2rem, 5vw, 4.2rem);
-      letter-spacing: .08em;
-      font-weight: 850;
-      margin: 14px 0 4px;
-      position:relative;
-    }
-    .timerLabel{
-      color: rgba(255,255,255,.75);
-      text-transform: lowercase;
-      letter-spacing:.04em;
-      margin: 0 0 14px;
-      position:relative;
-    }
+nav{
+  display:flex;
+  gap:14px;
+}
 
-    /* Quick buttons */
-    .quick{
-      display:flex;
-      gap:10px;
-      justify-content:center;
-      flex-wrap:wrap;
-      margin-top: 10px;
-      position:relative;
-    }
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.88);
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-    }
-    .btn:hover{
-      transform: translateY(-1px);
-      background: rgba(255,255,255,.07);
-      border-color: rgba(255,255,255,.18);
-    }
-    .btn.primary{
-      border-color: rgba(242,193,78,.30);
-      background: rgba(242,193,78,.08);
-    }
+nav a{
+  color:rgba(255,255,255,.85);
+  text-decoration:none;
+  padding:6px 10px;
+  border-radius:999px;
+}
 
-    /* Sections */
-    .section{
-      margin-top: 18px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(255,255,255,.03);
-      border-radius: var(--r);
-      box-shadow: 0 14px 45px rgba(0,0,0,.35);
-      padding: 18px;
-    }
-    .section h2{
-      margin:0 0 12px;
-      font-size: 1.15rem;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
+nav a:hover{
+  background:rgba(255,255,255,.06);
+}
 
-    /* Schedule list */
-    .scheduleWrap{
-      border-radius: 14px;
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.16);
-      overflow:hidden;
-    }
-    .scheduleHeader{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      padding:12px 12px;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      color: rgba(255,255,255,.78);
-      font-size:.95rem;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-    .scheduleBody{padding: 12px; color: rgba(255,255,255,.84); line-height: 1.6;}
-    .item{
-      display:flex; gap:12px;
-      padding:10px 0;
-      border-bottom: 1px dashed rgba(255,255,255,.10);
-    }
-    .item:last-child{border-bottom:0}
-    .time{
-      font-family: var(--mono);
-      color: rgba(255,255,255,.78);
-      min-width: 140px;
-    }
-    .desc .name{font-weight:800}
-    .desc .meta{color: rgba(255,255,255,.65); font-size:.95rem}
+/* HERO */
+.hero{
+  margin-top:40px;
+  text-align:center;
+  padding:50px 20px;
+  border-radius:var(--r);
+  background:rgba(255,255,255,.04);
+}
 
-    /* FAQ */
-    .faq{display:grid; gap:10px;}
-    details{
-      border:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.14);
-      border-radius: 14px;
-      padding: 12px 12px;
-    }
-    summary{
-      cursor:pointer;
-      font-weight:800;
-      color: rgba(255,255,255,.88);
-      outline:none;
-      list-style:none;
-    }
-    summary::-webkit-details-marker{display:none}
-    details p{margin:10px 0 0; color: rgba(255,255,255,.78); line-height:1.6}
+.title{
+  font-size:2.6rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin-bottom:20px;
+}
 
-    footer{
-      margin-top: 16px;
-      text-align:center;
-      color: rgba(255,255,255,.55);
-      padding: 10px 0 0;
-      font-size:.95rem;
-    }
+.subtitle{
+  margin:0 auto 25px;
+  max-width:700px;
+  line-height:1.7;
+  font-size:1.05rem;
+  color:var(--muted);
+}
 
-    @media (max-width: 520px){
-      .time{min-width: 96px}
-      .title{font-size:1.8rem}
-    }
-  </style>
+.subtitle strong{
+  display:block;
+  margin-top:10px;
+  font-size:1.2rem;
+  color:white;
+}
+
+/* TIMER */
+.timer{
+  font-family:var(--mono);
+  font-size:clamp(2rem,5vw,4rem);
+  font-weight:900;
+  letter-spacing:.08em;
+}
+
+.timerLabel{
+  margin-top:8px;
+  color:var(--muted);
+}
+
+/* SECTION */
+.section{
+  margin-top:50px;
+  padding:25px;
+  border-radius:var(--r);
+  background:rgba(255,255,255,.04);
+}
+
+.section h2{
+  margin-bottom:18px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  font-size:1rem;
+}
+
+/* SCHEDULE */
+.item{
+  display:flex;
+  gap:20px;
+  padding:12px 0;
+  border-bottom:1px dashed rgba(255,255,255,.1);
+}
+.item:last-child{border-bottom:0}
+
+.time{
+  font-family:var(--mono);
+  min-width:120px;
+  color:var(--muted);
+}
+
+.name{font-weight:700}
+
+/* RESOURCES CENTERED */
+.resources{
+  margin-top:60px;
+  text-align:center;
+}
+
+.resource-buttons{
+  margin-top:25px;
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:12px 22px;
+  border-radius:999px;
+  background:rgba(242,193,78,.12);
+  border:1px solid rgba(242,193,78,.35);
+  text-decoration:none;
+  color:white;
+  transition:.2s ease;
+}
+
+.btn:hover{
+  transform:translateY(-3px);
+  background:rgba(242,193,78,.22);
+}
+
+/* FOOTER */
+footer{
+  margin-top:70px;
+  text-align:center;
+  color:rgba(255,255,255,.5);
+}
+</style>
 </head>
 <body>
-  <div class="bg" aria-hidden="true"></div>
 
-  <div class="wrap" id="home">
-    <div class="top">
-      <div class="brand">
-        <span class="liveDot" aria-hidden="true"></span>
-        <span>LIVE</span>
-      </div>
+<div class="wrap">
 
-      <nav>
-        <a class="navLink" href="#home">Home</a>
-        <a class="navLink" href="#schedule">Schedule</a>
-        <a class="navLink" href="#faq">FAQ</a>
-        <a class="navLink" href="#resources">Resources</a>
-      </nav>
-    </div>
-
-    <!-- HOME -->
-    <section class="hero" aria-label="HackHive Live Countdown">
-      <div class="title">HackHive</div>
-      <p class="subtitle">
-        <strong>MS-CC Environmental Science Hackathon</strong> • <strong>Apr 3–4</strong> • On campus @ <strong>WVSU</strong><br/>
-        Theme: <strong>Securing Air Quality Data in Distributed Sensor Networks</strong>
-      </p>
-
-      <div class="timer" id="timer">00:00:00:00</div>
-      <div class="timerLabel" id="timerLabel">until hacking begins</div>
-
-      <div class="quick">
-        <a class="btn primary" href="#schedule">View schedule →</a>
-        <a class="btn" href="#faq">FAQs →</a>
-        <a class="btn" href="#resources">Resources →</a>
-      </div>
-    </section>
-
-    <!-- SCHEDULE -->
-    <section class="section" id="schedule">
-      <h2>Schedule</h2>
-
-      <div class="scheduleWrap">
-        <div class="scheduleHeader">
-          <div><strong id="scheduleTitle">HackHive • Apr 3–4</strong></div>
-          <div style="color: rgba(255,255,255,.60);" id="tzLine"></div>
-        </div>
-
-        <div class="scheduleBody" id="scheduleBody"></div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="section" id="faq">
-      <h2>FAQ</h2>
-
-      <div class="faq">
-        <details open>
-          <summary>Where is HackHive?</summary>
-          <p>On campus at <strong>West Virginia State University (WVSU)</strong> in Institute, WV.</p>
-        </details>
-
-        <details>
-          <summary>What’s the theme?</summary>
-          <p><strong>Securing Air Quality Data in Distributed Sensor Networks</strong> — protecting integrity, availability, and trust in environmental sensor data end-to-end.</p>
-        </details>
-
-        <details>
-          <summary>What should I bring?</summary>
-          <p>Laptop + charger, ID, and anything you need to build/demo. If you’re using sensors, bring your own hardware (unless organizers provide kits).</p>
-        </details>
-
-        <details>
-          <summary>Do I need a team?</summary>
-          <p>Teams are encouraged, but you can also join solo and form a team during the event (edit based on your official rules).</p>
-        </details>
-      </div>
-    </section>
-
-    <!-- RESOURCES -->
-    <section class="section" id="resources">
-      <h2>Resources</h2>
-
-      <div style="display:flex; flex-wrap:wrap; gap:10px;">
-        <a class="btn primary" href="https://ms-cc.org/ms-cc-hackathon-at-west-virginia-state-university/" target="_blank" rel="noreferrer">
-          MS-CC Event Page →
-        </a>
-        <a class="btn" href="#" onclick="alert('Paste your Discord/Slack link into this button href.'); return false;">
-          Discord/Slack →
-        </a>
-        <a class="btn" href="#" onclick="alert('Paste your Devpost link into this button href.'); return false;">
-          Devpost →
-        </a>
-        <a class="btn" href="#" onclick="alert('Paste your dataset/repo link into this button href.'); return false;">
-          Dataset/Repo →
-        </a>
-      </div>
-
-      <div style="margin-top:12px; color: rgba(255,255,255,.72); line-height:1.6;">
-        Tip: replace the “alert” buttons with real links by editing the <code>href</code>.
-      </div>
-    </section>
-
-    <footer>
-      Made with ❤️ for HackHive • <span id="year"></span>
-    </footer>
+  <!-- NAV -->
+  <div class="top">
+    <div class="brand">LIVE  HackHive</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#schedule">Schedule</a>
+      <a href="#resources">Resources</a>
+    </nav>
   </div>
 
-  <script>
-    // =============================
-    // COUNTDOWN CONFIG (NYC time)
-    // =============================
-    // Update year if needed.
-    // Early April is typically EDT (UTC-4) => -04:00
-    const HACKING_START_ISO = "2026-04-03T07:00:00-04:00"; // kickoff/start in NYC
-    const HACKING_END_ISO   = "2026-04-04T19:00:00-04:00"; // example end (change!)
+  <!-- HOME -->
+  <section class="hero" id="home">
+    <div class="title">HackHive</div>
 
-    // =============================
-    // SCHEDULE DATA (EDIT THESE)
-    // =============================
-    const SCHEDULE = [
-      { time: "Fri 7:00 AM",  name: "Kickoff / Check-in", meta: "Welcome + logistics (WVSU campus)" },
-      { time: "Fri 9:00 AM",  name: "Team Formation",     meta: "Find teammates + idea pitching" },
-      { time: "Fri 10:30 AM", name: "Workshop",           meta: "Securing sensor data pipelines" },
-      { time: "Fri 12:00 PM", name: "Lunch",              meta: "Food + networking" },
-      { time: "Sat 1:00 PM",  name: "Project Demos",      meta: "Show what you built" },
-      { time: "Sat 3:00 PM",  name: "Judging + Awards",   meta: "Winners announced" },
-    ];
+    <div class="subtitle">
+      MS-CC Environmental Hackathon<br>
+      Apr 3–4  WVSU<br>
+      <strong>Securing Air Quality Data in Distributed Sensor Networks</strong>
+    </div>
 
-    const $ = (id) => document.getElementById(id);
-    const pad2 = (n) => String(n).padStart(2, "0");
+    <div class="timer" id="timer">00:00:00:00</div>
+    <div class="timerLabel" id="timerLabel">until hacking begins</div>
+  </section>
 
-    function diffParts(ms){
-      const t = Math.max(0, ms);
-      const totalSec = Math.floor(t / 1000);
-      const days = Math.floor(totalSec / 86400);
-      const hours = Math.floor((totalSec % 86400) / 3600);
-      const minutes = Math.floor((totalSec % 3600) / 60);
-      const seconds = totalSec % 60;
-      return { days, hours, minutes, seconds };
-    }
-    function fmtTimer({days, hours, minutes, seconds}){
-      return `${pad2(days)}:${pad2(hours)}:${pad2(minutes)}:${pad2(seconds)}`;
-    }
+  <!-- SCHEDULE -->
+  <section class="section" id="schedule">
+    <h2>Schedule</h2>
 
-    function formatNYC(date){
-      return new Intl.DateTimeFormat("en-US", {
-        timeZone: "America/New_York",
-        weekday: "short",
-        month: "short",
-        day: "2-digit",
-        hour: "numeric",
-        minute: "2-digit",
-        hour12: true
-      }).format(date);
-    }
+    <div class="item">
+      <div class="time">Fri 7:00 AM</div>
+      <div class="name">Kickoff</div>
+    </div>
 
-    function renderSchedule(items){
-      $("scheduleBody").innerHTML = items.map(x => `
-        <div class="item">
-          <div class="time">${x.time}</div>
-          <div class="desc">
-            <div class="name">${x.name}</div>
-            <div class="meta">${x.meta || ""}</div>
-          </div>
-        </div>
-      `).join("");
-    }
+    <div class="item">
+      <div class="time">Fri 9:00 AM</div>
+      <div class="name">Team Formation</div>
+    </div>
 
-    const start = new Date(HACKING_START_ISO);
-    const end   = new Date(HACKING_END_ISO);
+    <div class="item">
+      <div class="time">Sat 1:00 PM</div>
+      <div class="name">Project Demos</div>
+    </div>
 
-    function tick(){
-      const now = new Date();
-      const nowMs = now.getTime();
-      const startMs = start.getTime();
-      const endMs = end.getTime();
+    <div class="item">
+      <div class="time">Sat 3:00 PM</div>
+      <div class="name">Awards</div>
+    </div>
+  </section>
 
-      let target, label;
+  <!-- RESOURCES -->
+  <section class="resources" id="resources">
+    <h2 style="text-transform:uppercase;letter-spacing:.08em;">Resources</h2>
 
-      if (nowMs < startMs){
-        target = startMs;
-        label = "until hacking begins";
-      } else if (nowMs < endMs){
-        target = endMs;
-        label = "until hacking ends";
-      } else {
-        $("timer").textContent = "00:00:00:00";
-        $("timerLabel").textContent = "hacking has ended";
-        return;
-      }
+    <div class="resource-buttons">
+      <a class="btn" href="#">Devpost →</a>
+      <a class="btn" href="#">Discord →</a>
+      <a class="btn" href="#">Dataset →</a>
+      <a class="btn" href="#">Event Page →</a>
+    </div>
+  </section>
 
-      $("timerLabel").textContent = label;
-      $("timer").textContent = fmtTimer(diffParts(target - nowMs));
-    }
+  <footer>
+    Made with ❤️ for HackHive • <span id="year"></span>
+  </footer>
 
-    // Init
-    $("year").textContent = new Date().getFullYear();
-    $("tzLine").textContent = "NYC kickoff: " + formatNYC(start);
-    renderSchedule(SCHEDULE);
-    tick();
-    setInterval(tick, 1000);
-  </script>
+</div>
+
+<script>
+// COUNTDOWN (NYC time)
+const START = new Date("2026-04-03T07:00:00-04:00");
+const END   = new Date("2026-04-04T19:00:00-04:00");
+
+function pad(n){return String(n).padStart(2,"0")}
+
+function tick(){
+  const now = new Date().getTime();
+  let target, label;
+
+  if(now < START){
+    target = START;
+    label = "until hacking begins";
+  } else if(now < END){
+    target = END;
+    label = "until hacking ends";
+  } else {
+    document.getElementById("timer").textContent = "00:00:00:00";
+    document.getElementById("timerLabel").textContent = "hacking has ended";
+    return;
+  }
+
+  const diff = target - now;
+  const d = Math.floor(diff/86400000);
+  const h = Math.floor((diff%86400000)/3600000);
+  const m = Math.floor((diff%3600000)/60000);
+  const s = Math.floor((diff%60000)/1000);
+
+  document.getElementById("timer").textContent =
+    `${pad(d)}:${pad(h)}:${pad(m)}:${pad(s)}`;
+  document.getElementById("timerLabel").textContent = label;
+}
+
+document.getElementById("year").textContent = new Date().getFullYear();
+tick();
+setInterval(tick,1000);
+</script>
+
 </body>
 </html>

@@ -29,7 +29,27 @@
                   linear-gradient(180deg, #070812, #0b0d12);
     }
 
-    
+    /* Optional: keep background image (no logo shown on page)
+       Put image next to this HTML as: wvsu-csic-logo.png */
+    .bg{
+      position:fixed; inset:0; z-index:-2;
+      background: url("wvsu-csic-logo.png") center/cover no-repeat;
+      opacity:.10;
+      filter: contrast(1.05) saturate(1.05) brightness(.85);
+      transform: scale(1.03);
+    }
+    .bg::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(11,13,18,.92), rgba(11,13,18,.78), rgba(11,13,18,.92));
+      backdrop-filter: blur(10px);
+    }
+
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.92}
+
+    .wrap{max-width:1080px; margin:0 auto; padding:22px 16px 44px;}
+
     /* Top nav */
     .top{
       display:flex; align-items:center; justify-content:space-between;
@@ -79,17 +99,8 @@
         radial-gradient(520px 420px at 85% 70%, rgba(125,211,252,.12), transparent 60%);
       pointer-events:none;
     }
-    .logoRow{display:flex; align-items:center; justify-content:center; gap:14px; position:relative;}
-    .logoRow img{
-      width:56px; height:56px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
-      padding:10px;
-      object-fit:contain;
-    }
     .title{
-      margin: 14px 0 6px;
+      margin: 6px 0 6px;
       font-size: 2.2rem;
       letter-spacing:.06em;
       text-transform:uppercase;
@@ -251,10 +262,6 @@
 
     <!-- HOME -->
     <section class="hero" aria-label="HackHive Live Countdown">
-      <div class="logoRow">
-        <img src="wvsu-csic-logo.png" alt="WVSU CSIC logo">
-      </div>
-
       <div class="title">HackHive</div>
       <p class="subtitle">
         <strong>MS-CC Environmental Science Hackathon</strong> • <strong>Apr 3–4</strong> • On campus @ <strong>WVSU</strong><br/>
@@ -362,9 +369,6 @@
       { time: "Sat 3:00 PM",  name: "Judging + Awards",   meta: "Winners announced" },
     ];
 
-    // =============================
-    // Utilities
-    // =============================
     const $ = (id) => document.getElementById(id);
     const pad2 = (n) => String(n).padStart(2, "0");
 
@@ -378,7 +382,6 @@
       return { days, hours, minutes, seconds };
     }
     function fmtTimer({days, hours, minutes, seconds}){
-      // TreeHacks-like: DD:HH:MM:SS
       return `${pad2(days)}:${pad2(hours)}:${pad2(minutes)}:${pad2(seconds)}`;
     }
 
@@ -406,9 +409,6 @@
       `).join("");
     }
 
-    // =============================
-    // Countdown logic
-    // =============================
     const start = new Date(HACKING_START_ISO);
     const end   = new Date(HACKING_END_ISO);
 

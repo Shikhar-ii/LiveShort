@@ -4,11 +4,10 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>LIVE • HackHive</title>
-  <meta name="description" content="HackHive LIVE — Apr 3–4 at WVSU. Countdown + schedule + links." />
+  <meta name="description" content="HackHive LIVE — Apr 3–4 at WVSU. Countdown + schedule + FAQ + resources." />
   <style>
     :root{
       --bg:#0b0d12;
-      --panel:#111522;
       --hair: rgba(255,255,255,.10);
       --text: rgba(255,255,255,.92);
       --muted: rgba(255,255,255,.65);
@@ -30,7 +29,7 @@
                   linear-gradient(180deg, #070812, #0b0d12);
     }
 
-    /* subtle branded background */
+    /* Put your image next to this HTML as: wvsu-csic-logo.png */
     .bg{
       position:fixed; inset:0; z-index:-2;
       background: url("wvsu-csic-logo.png") center/cover no-repeat;
@@ -46,18 +45,19 @@
     }
 
     a{color:inherit; text-decoration:none}
-    a:hover{opacity:.9}
+    a:hover{opacity:.92}
 
-    .wrap{max-width:1080px; margin:0 auto; padding:22px 16px 40px;}
+    .wrap{max-width:1080px; margin:0 auto; padding:22px 16px 44px;}
+
+    /* Top nav */
     .top{
       display:flex; align-items:center; justify-content:space-between;
       gap:14px;
     }
-
     .brand{
       display:flex; align-items:center; gap:10px;
-      font-weight:750;
-      letter-spacing:.08em;
+      font-weight:800;
+      letter-spacing:.10em;
       text-transform:uppercase;
       font-size:.92rem;
     }
@@ -66,12 +66,7 @@
       background: var(--accent);
       box-shadow: 0 0 0 6px rgba(242,193,78,.14);
     }
-
-    nav{
-      display:flex; gap:12px; flex-wrap:wrap;
-      align-items:center;
-      justify-content:flex-end;
-    }
+    nav{display:flex; gap:12px; flex-wrap:wrap; align-items:center; justify-content:flex-end;}
     .navLink{
       padding:8px 10px;
       border-radius:999px;
@@ -83,6 +78,7 @@
       background: rgba(255,255,255,.04);
     }
 
+    /* Hero */
     .hero{
       margin-top: 22px;
       border:1px solid rgba(255,255,255,.10);
@@ -102,14 +98,7 @@
         radial-gradient(520px 420px at 85% 70%, rgba(125,211,252,.12), transparent 60%);
       pointer-events:none;
     }
-
-    .logoRow{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:14px;
-      position:relative;
-    }
+    .logoRow{display:flex; align-items:center; justify-content:center; gap:14px; position:relative;}
     .logoRow img{
       width:56px; height:56px;
       border-radius:14px;
@@ -127,12 +116,13 @@
     }
     .subtitle{
       margin:0 auto 18px;
-      max-width: 72ch;
+      max-width: 78ch;
       color: var(--muted);
       line-height: 1.55;
       position:relative;
     }
 
+    /* Big TreeHacks-like timer */
     .timer{
       font-family: var(--mono);
       font-size: clamp(2.2rem, 5vw, 4.2rem);
@@ -149,6 +139,7 @@
       position:relative;
     }
 
+    /* Quick buttons */
     .quick{
       display:flex;
       gap:10px;
@@ -178,6 +169,7 @@
       background: rgba(242,193,78,.08);
     }
 
+    /* Sections */
     .section{
       margin-top: 18px;
       border:1px solid rgba(255,255,255,.10);
@@ -193,27 +185,7 @@
       text-transform:uppercase;
     }
 
-    .tabs{
-      display:flex;
-      gap:10px;
-      flex-wrap:wrap;
-      margin-bottom: 12px;
-    }
-    .tab{
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.85);
-      cursor:pointer;
-      user-select:none;
-      font-size:.95rem;
-    }
-    .tab.active{
-      border-color: rgba(242,193,78,.30);
-      background: rgba(242,193,78,.08);
-    }
-
+    /* Schedule list */
     .scheduleWrap{
       border-radius: 14px;
       border:1px solid rgba(255,255,255,.10);
@@ -228,15 +200,12 @@
       border-bottom: 1px solid rgba(255,255,255,.08);
       color: rgba(255,255,255,.78);
       font-size:.95rem;
+      gap:10px;
+      flex-wrap:wrap;
     }
-    .scheduleBody{
-      padding: 12px;
-      color: rgba(255,255,255,.84);
-      line-height: 1.6;
-    }
+    .scheduleBody{padding: 12px; color: rgba(255,255,255,.84); line-height: 1.6;}
     .item{
-      display:flex;
-      gap:12px;
+      display:flex; gap:12px;
       padding:10px 0;
       border-bottom: 1px dashed rgba(255,255,255,.10);
     }
@@ -246,8 +215,26 @@
       color: rgba(255,255,255,.78);
       min-width: 140px;
     }
-    .desc .name{font-weight:700}
+    .desc .name{font-weight:800}
     .desc .meta{color: rgba(255,255,255,.65); font-size:.95rem}
+
+    /* FAQ */
+    .faq{display:grid; gap:10px;}
+    details{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.14);
+      border-radius: 14px;
+      padding: 12px 12px;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:800;
+      color: rgba(255,255,255,.88);
+      outline:none;
+      list-style:none;
+    }
+    summary::-webkit-details-marker{display:none}
+    details p{margin:10px 0 0; color: rgba(255,255,255,.78); line-height:1.6}
 
     footer{
       margin-top: 16px;
@@ -275,14 +262,13 @@
 
       <nav>
         <a class="navLink" href="#home">Home</a>
+        <a class="navLink" href="#schedule">Schedule</a>
         <a class="navLink" href="#faq">FAQ</a>
         <a class="navLink" href="#resources">Resources</a>
-        <a class="navLink" href="#badges">Badges</a>
-        <a class="navLink" href="#qr">QR</a>
-        <a class="navLink" href="https://example.com/devpost" target="_blank" rel="noreferrer">Devpost</a>
       </nav>
     </div>
 
+    <!-- HOME -->
     <section class="hero" aria-label="HackHive Live Countdown">
       <div class="logoRow">
         <img src="wvsu-csic-logo.png" alt="WVSU CSIC logo">
@@ -298,99 +284,101 @@
       <div class="timerLabel" id="timerLabel">until hacking begins</div>
 
       <div class="quick">
-        <a class="btn primary" href="https://example.com/devpost" target="_blank" rel="noreferrer">Devpost →</a>
+        <a class="btn primary" href="#schedule">View schedule →</a>
         <a class="btn" href="#faq">FAQs →</a>
         <a class="btn" href="#resources">Resources →</a>
-        <a class="btn" href="#qr">QR →</a>
       </div>
     </section>
 
+    <!-- SCHEDULE -->
     <section class="section" id="schedule">
       <h2>Schedule</h2>
 
-      <div class="tabs" role="tablist" aria-label="Schedule view">
-        <div class="tab active" role="tab" aria-selected="true" tabindex="0" data-view="list">List</div>
-        <div class="tab" role="tab" aria-selected="false" tabindex="0" data-view="calendar">Calendar</div>
-      </div>
-
       <div class="scheduleWrap">
         <div class="scheduleHeader">
-          <div id="scheduleTitle">Upcoming</div>
-          <div style="display:flex; gap:10px; align-items:center;">
-            <span style="color: rgba(255,255,255,.60);" id="tzLine"></span>
-            <a class="btn" style="padding:7px 10px; font-size:.92rem;" href="#" id="toggleUpcoming">Upcoming</a>
-            <a class="btn" style="padding:7px 10px; font-size:.92rem;" href="#" id="togglePrevious">Previous</a>
-          </div>
+          <div><strong id="scheduleTitle">HackHive • Apr 3–4</strong></div>
+          <div style="color: rgba(255,255,255,.60);" id="tzLine"></div>
         </div>
 
-        <div class="scheduleBody" id="scheduleBody">
-          <!-- Populated by JS -->
-        </div>
+        <div class="scheduleBody" id="scheduleBody"></div>
       </div>
     </section>
 
+    <!-- FAQ -->
     <section class="section" id="faq">
       <h2>FAQ</h2>
-      <div style="color: rgba(255,255,255,.78); line-height:1.65;">
-        <p><strong>Where is it?</strong> WVSU campus (Institute, WV).</p>
-        <p><strong>What’s the theme?</strong> Securing Air Quality Data in Distributed Sensor Networks.</p>
-        <p><strong>Who can attend?</strong> Students/teams (edit this section with your official rules).</p>
+
+      <div class="faq">
+        <details open>
+          <summary>Where is HackHive?</summary>
+          <p>On campus at <strong>West Virginia State University (WVSU)</strong> in Institute, WV.</p>
+        </details>
+
+        <details>
+          <summary>What’s the theme?</summary>
+          <p><strong>Securing Air Quality Data in Distributed Sensor Networks</strong> — protecting integrity, availability, and trust in environmental sensor data end-to-end.</p>
+        </details>
+
+        <details>
+          <summary>What should I bring?</summary>
+          <p>Laptop + charger, ID, and anything you need to build/demo. If you’re using sensors, bring your own hardware (unless organizers provide kits).</p>
+        </details>
+
+        <details>
+          <summary>Do I need a team?</summary>
+          <p>Teams are encouraged, but you can also join solo and form a team during the event (edit based on your official rules).</p>
+        </details>
       </div>
     </section>
 
+    <!-- RESOURCES -->
     <section class="section" id="resources">
       <h2>Resources</h2>
+
       <div style="display:flex; flex-wrap:wrap; gap:10px;">
-        <a class="btn" href="https://ms-cc.org/ms-cc-hackathon-at-west-virginia-state-university/" target="_blank" rel="noreferrer">MS-CC Event Page →</a>
-        <a class="btn" href="#" onclick="alert('Add your Discord/Slack link here'); return false;">Discord/Slack →</a>
-        <a class="btn" href="#" onclick="alert('Add your dataset/repo link here'); return false;">Dataset/Repo →</a>
+        <a class="btn primary" href="https://ms-cc.org/ms-cc-hackathon-at-west-virginia-state-university/" target="_blank" rel="noreferrer">
+          MS-CC Event Page →
+        </a>
+        <a class="btn" href="#" onclick="alert('Paste your Discord/Slack link into this button href.'); return false;">
+          Discord/Slack →
+        </a>
+        <a class="btn" href="#" onclick="alert('Paste your Devpost link into this button href.'); return false;">
+          Devpost →
+        </a>
+        <a class="btn" href="#" onclick="alert('Paste your dataset/repo link into this button href.'); return false;">
+          Dataset/Repo →
+        </a>
       </div>
-    </section>
 
-    <section class="section" id="badges">
-      <h2>Badges</h2>
-      <div style="color: rgba(255,255,255,.78); line-height:1.65;">
-        Add badge links or live status cards here (ex: “Submitted”, “Mentor Helped”, “Workshop Attended”).
-      </div>
-    </section>
-
-    <section class="section" id="qr">
-      <h2>QR</h2>
-      <div style="color: rgba(255,255,255,.78); line-height:1.65;">
-        Put a QR code image here (registration / Wi-Fi / Discord / Devpost).<br/>
-        Example: <code>&lt;img src="qr.png" style="max-width:220px;border-radius:16px;border:1px solid rgba(255,255,255,.12);" /&gt;</code>
+      <div style="margin-top:12px; color: rgba(255,255,255,.72); line-height:1.6;">
+        Tip: replace the “alert” buttons with real links by editing the <code>href</code>.
       </div>
     </section>
 
     <footer>
-      Made with ❤️ by the HackHive team • <span id="year"></span>
+      Made with ❤️ for HackHive • <span id="year"></span>
     </footer>
   </div>
 
   <script>
     // =============================
-    // 1) COUNTDOWN CONFIG (NYC time)
+    // COUNTDOWN CONFIG (NYC time)
     // =============================
-    // Set START and END. Update year as needed.
+    // Update year if needed.
     // Early April is typically EDT (UTC-4) => -04:00
-    const HACKING_START_ISO = "2026-04-03T07:00:00-04:00"; // kickoff/start
+    const HACKING_START_ISO = "2026-04-03T07:00:00-04:00"; // kickoff/start in NYC
     const HACKING_END_ISO   = "2026-04-04T19:00:00-04:00"; // example end (change!)
 
     // =============================
-    // 2) SCHEDULE DATA (edit!)
+    // SCHEDULE DATA (EDIT THESE)
     // =============================
-    // Times below are shown as plain text. You can also add ISO times if you want auto-formatting.
-    const SCHEDULE_UPCOMING = [
+    const SCHEDULE = [
       { time: "Fri 7:00 AM",  name: "Kickoff / Check-in", meta: "Welcome + logistics (WVSU campus)" },
       { time: "Fri 9:00 AM",  name: "Team Formation",     meta: "Find teammates + idea pitching" },
       { time: "Fri 10:30 AM", name: "Workshop",           meta: "Securing sensor data pipelines" },
       { time: "Fri 12:00 PM", name: "Lunch",              meta: "Food + networking" },
       { time: "Sat 1:00 PM",  name: "Project Demos",      meta: "Show what you built" },
       { time: "Sat 3:00 PM",  name: "Judging + Awards",   meta: "Winners announced" },
-    ];
-
-    const SCHEDULE_PREVIOUS = [
-      { time: "—", name: "Nothing yet", meta: "Previous items appear after the event starts." }
     ];
 
     // =============================
@@ -408,30 +396,10 @@
       const seconds = totalSec % 60;
       return { days, hours, minutes, seconds };
     }
-
     function fmtTimer({days, hours, minutes, seconds}){
-      // TreeHacks style: DD:HH:MM:SS
+      // TreeHacks-like: DD:HH:MM:SS
       return `${pad2(days)}:${pad2(hours)}:${pad2(minutes)}:${pad2(seconds)}`;
     }
-
-    function renderSchedule(items){
-      const body = $("scheduleBody");
-      body.innerHTML = items.map(x => `
-        <div class="item">
-          <div class="time">${x.time}</div>
-          <div class="desc">
-            <div class="name">${x.name}</div>
-            <div class="meta">${x.meta || ""}</div>
-          </div>
-        </div>
-      `).join("");
-    }
-
-    // =============================
-    // Countdown logic: shows "until hacking begins" then switches to "until hacking ends"
-    // =============================
-    const start = new Date(HACKING_START_ISO);
-    const end   = new Date(HACKING_END_ISO);
 
     function formatNYC(date){
       return new Intl.DateTimeFormat("en-US", {
@@ -444,6 +412,24 @@
         hour12: true
       }).format(date);
     }
+
+    function renderSchedule(items){
+      $("scheduleBody").innerHTML = items.map(x => `
+        <div class="item">
+          <div class="time">${x.time}</div>
+          <div class="desc">
+            <div class="name">${x.name}</div>
+            <div class="meta">${x.meta || ""}</div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // =============================
+    // Countdown logic
+    // =============================
+    const start = new Date(HACKING_START_ISO);
+    const end   = new Date(HACKING_END_ISO);
 
     function tick(){
       const now = new Date();
@@ -466,62 +452,13 @@
       }
 
       $("timerLabel").textContent = label;
-      const parts = diffParts(target - nowMs);
-      $("timer").textContent = fmtTimer(parts);
+      $("timer").textContent = fmtTimer(diffParts(target - nowMs));
     }
 
-    // =============================
-    // Tabs (List/Calendar)
-    // =============================
-    const tabs = document.querySelectorAll(".tab");
-    tabs.forEach(t => t.addEventListener("click", () => setTab(t.dataset.view)));
-    tabs.forEach(t => t.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setTab(t.dataset.view); }
-    }));
-
-    function setTab(view){
-      tabs.forEach(t => t.classList.toggle("active", t.dataset.view === view));
-
-      if (view === "calendar"){
-        $("scheduleBody").innerHTML = `
-          <div style="color: rgba(255,255,255,.75); line-height:1.7;">
-            <strong>Calendar view placeholder</strong><br/>
-            If you have a Google Calendar, paste an embed iframe here.
-            <div style="margin-top:10px; padding:12px; border:1px solid rgba(255,255,255,.10); border-radius:14px; background:rgba(0,0,0,.16);">
-              <code>&lt;iframe src="YOUR_CALENDAR_EMBED_URL" style="width:100%;height:520px;border:0;"&gt;&lt;/iframe&gt;</code>
-            </div>
-          </div>
-        `;
-      } else {
-        renderSchedule(currentMode === "upcoming" ? SCHEDULE_UPCOMING : SCHEDULE_PREVIOUS);
-      }
-    }
-
-    // =============================
-    // Upcoming/Previous toggles
-    // =============================
-    let currentMode = "upcoming";
-    $("toggleUpcoming").addEventListener("click", (e) => {
-      e.preventDefault();
-      currentMode = "upcoming";
-      $("scheduleTitle").textContent = "Upcoming";
-      if (document.querySelector(".tab.active").dataset.view === "list") renderSchedule(SCHEDULE_UPCOMING);
-    });
-    $("togglePrevious").addEventListener("click", (e) => {
-      e.preventDefault();
-      currentMode = "previous";
-      $("scheduleTitle").textContent = "Previous";
-      if (document.querySelector(".tab.active").dataset.view === "list") renderSchedule(SCHEDULE_PREVIOUS);
-    });
-
-    // =============================
     // Init
-    // =============================
     $("year").textContent = new Date().getFullYear();
-    $("tzLine").textContent = "NYC: " + formatNYC(start);
-
-    renderSchedule(SCHEDULE_UPCOMING);
-    setTab("list");
+    $("tzLine").textContent = "NYC kickoff: " + formatNYC(start);
+    renderSchedule(SCHEDULE);
     tick();
     setInterval(tick, 1000);
   </script>

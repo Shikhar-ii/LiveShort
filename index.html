@@ -3,354 +3,440 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>HackHive | Apr 3–4 | WVSU</title>
-  <meta name="description" content="HackHive — MS-CC Environmental Science Hackathon at West Virginia State University (Apr 3–4). Countdown + event details." />
+  <title>LIVE • HackHive</title>
+  <meta name="description" content="HackHive LIVE — Apr 3–4 at WVSU. Countdown + schedule + links." />
   <style>
     :root{
-      --bg0:#05070f;
-      --bg1:#070b18;
-      --hair: rgba(255,255,255,.12);
+      --bg:#0b0d12;
+      --panel:#111522;
+      --hair: rgba(255,255,255,.10);
       --text: rgba(255,255,255,.92);
-      --muted: rgba(255,255,255,.72);
-      --gold:#f2c14e;
-      --sky:#7dd3fc;
-      --vio:#a78bfa;
-      --shadow: 0 18px 60px rgba(0,0,0,.45);
-      --r: 22px;
+      --muted: rgba(255,255,255,.65);
+      --accent:#f2c14e;
       --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
       --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --r: 18px;
+      --shadow: 0 18px 55px rgba(0,0,0,.55);
     }
+
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: var(--sans);
-      color: var(--text);
-      background:
-        radial-gradient(1200px 700px at 15% 20%, rgba(125,211,252,.18), transparent 60%),
-        radial-gradient(900px 600px at 80% 70%, rgba(242,193,78,.16), transparent 55%),
-        linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 55%, var(--bg0) 100%);
-      overflow-x:hidden;
+      font-family:var(--sans);
+      color:var(--text);
+      background: radial-gradient(1200px 800px at 20% 20%, rgba(242,193,78,.13), transparent 55%),
+                  radial-gradient(900px 700px at 80% 70%, rgba(125,211,252,.10), transparent 60%),
+                  linear-gradient(180deg, #070812, #0b0d12);
     }
 
-    /* Put your image file next to this HTML and name it: wvsu-csic-logo.png */
+    /* subtle branded background */
     .bg{
-      position:fixed; inset:0; z-index:-3;
+      position:fixed; inset:0; z-index:-2;
       background: url("wvsu-csic-logo.png") center/cover no-repeat;
-      filter: saturate(1.05) contrast(1.08) brightness(.72);
-      transform: scale(1.06);
-      opacity:.18;
+      opacity:.10;
+      filter: contrast(1.05) saturate(1.05) brightness(.85);
+      transform: scale(1.03);
     }
     .bg::after{
       content:"";
       position:absolute; inset:0;
-      background:
-        radial-gradient(900px 600px at 22% 25%, rgba(242,193,78,.22), transparent 60%),
-        radial-gradient(800px 520px at 72% 70%, rgba(125,211,252,.18), transparent 55%),
-        linear-gradient(180deg, rgba(5,7,15,.94) 0%, rgba(5,7,15,.70) 45%, rgba(5,7,15,.92) 100%);
+      background: linear-gradient(180deg, rgba(11,13,18,.92), rgba(11,13,18,.78), rgba(11,13,18,.92));
       backdrop-filter: blur(10px);
     }
 
-    .grain{
-      pointer-events:none;
-      position:fixed; inset:-25%;
-      z-index:-2;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.23'/%3E%3C/svg%3E");
-      opacity:.10; mix-blend-mode:overlay;
-      animation: drift 14s linear infinite;
-    }
-    @keyframes drift{to{transform:translate3d(-6%,-6%,0)}}
+    a{color:inherit; text-decoration:none}
+    a:hover{opacity:.9}
 
-    .wrap{min-height:100%; display:flex; justify-content:center; padding:52px 18px;}
-    .container{width:min(1120px,100%);}
-
-    .topbar{
+    .wrap{max-width:1080px; margin:0 auto; padding:22px 16px 40px;}
+    .top{
       display:flex; align-items:center; justify-content:space-between;
-      gap:16px; margin-bottom:22px;
+      gap:14px;
     }
-    .badge{
-      display:flex; align-items:center; gap:12px;
-      padding:10px 12px;
-      border:1px solid var(--hair);
-      background: rgba(255,255,255,.04);
-      border-radius:999px;
-      box-shadow:0 10px 34px rgba(0,0,0,.22);
-    }
-    .badge img{
-      width:36px; height:36px; object-fit:contain;
-      padding:6px; border-radius:12px;
-      background: rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.12);
-    }
-    .badge .t1{font-size:.78rem; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); line-height:1.1}
-    .badge .t2{font-size:.98rem; font-weight:700; letter-spacing:.02em; line-height:1.1}
 
-    .livechip{
+    .brand{
       display:flex; align-items:center; gap:10px;
-      padding:10px 14px;
-      border-radius:999px;
-      border:1px solid rgba(242,193,78,.28);
-      background: rgba(242,193,78,.08);
-      box-shadow:0 12px 34px rgba(0,0,0,.25);
-      white-space:nowrap;
-      color:rgba(255,255,255,.88);
+      font-weight:750;
+      letter-spacing:.08em;
+      text-transform:uppercase;
       font-size:.92rem;
     }
-    .dot{
+    .brand .liveDot{
       width:8px; height:8px; border-radius:99px;
-      background: var(--gold);
-      box-shadow:0 0 0 6px rgba(242,193,78,.14);
-      animation:pulse 1.6s ease-in-out infinite;
+      background: var(--accent);
+      box-shadow: 0 0 0 6px rgba(242,193,78,.14);
     }
-    @keyframes pulse{50%{transform:scale(1.18)}}
 
-    .card{
-      border-radius: var(--r);
-      border: 1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.05));
-      box-shadow: var(--shadow);
-      overflow:hidden;
-      position:relative;
+    nav{
+      display:flex; gap:12px; flex-wrap:wrap;
+      align-items:center;
+      justify-content:flex-end;
     }
-    .card::before{
+    .navLink{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid transparent;
+      color: rgba(255,255,255,.85);
+    }
+    .navLink:hover{
+      border-color: rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+    }
+
+    .hero{
+      margin-top: 22px;
+      border:1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: var(--r);
+      box-shadow: var(--shadow);
+      padding: 34px 18px 26px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
+    .hero::before{
       content:"";
       position:absolute; inset:-2px;
       background:
-        radial-gradient(760px 420px at 15% 15%, rgba(125,211,252,.22), transparent 60%),
-        radial-gradient(540px 360px at 92% 22%, rgba(242,193,78,.20), transparent 60%),
-        radial-gradient(520px 420px at 70% 112%, rgba(167,139,250,.16), transparent 60%);
+        radial-gradient(600px 400px at 15% 20%, rgba(242,193,78,.16), transparent 60%),
+        radial-gradient(520px 420px at 85% 70%, rgba(125,211,252,.12), transparent 60%);
       pointer-events:none;
     }
 
-    .grid{display:grid; grid-template-columns: 1.25fr .75fr;}
-    .left,.right{padding:34px; position:relative;}
-    .right{
-      border-left:1px solid rgba(255,255,255,.10);
-      background: rgba(0,0,0,.10);
+    .logoRow{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:14px;
+      position:relative;
     }
-
-    .hiveRow{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; flex-wrap:wrap;}
-    .hive{
-      margin:0;
-      font-size: clamp(2.1rem, 3.2vw + 1rem, 4.0rem);
-      letter-spacing:-0.03em;
-      line-height:1.02;
-    }
-    .hive span{
-      background: linear-gradient(90deg, rgba(242,193,78,1), rgba(125,211,252,1));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-    .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
+    .logoRow img{
+      width:56px; height:56px;
+      border-radius:14px;
+      border:1px solid rgba(255,255,255,.12);
       background: rgba(255,255,255,.06);
-      color: rgba(255,255,255,.86);
-      font-size:.95rem;
-      margin-top: 8px;
+      padding:10px;
+      object-fit:contain;
     }
-    .kicker strong{color:rgba(255,255,255,.92)}
-
-    .tagline{
-      margin:10px 0 18px 0;
+    .title{
+      margin: 14px 0 6px;
+      font-size: 2.2rem;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+      position:relative;
+    }
+    .subtitle{
+      margin:0 auto 18px;
+      max-width: 72ch;
       color: var(--muted);
-      font-size: 1.06rem;
       line-height: 1.55;
-      max-width: 68ch;
+      position:relative;
     }
 
-    .pills{display:flex; flex-wrap:wrap; gap:10px; margin-top: 16px;}
-    .pill{
-      display:flex; align-items:center; gap:10px;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      color: rgba(255,255,255,.84);
-      font-size:.95rem;
-    }
-
-    .timerTitle{
-      margin: 2px 0 14px 0;
-      font-size: 1rem;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.78);
-    }
     .timer{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-    .box{
-      border-radius: 18px;
-      background: linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.05));
-      border: 1px solid rgba(255,255,255,.14);
-      padding: 16px 14px;
-      text-align:center;
-      box-shadow: 0 14px 32px rgba(0,0,0,.18);
-    }
-    .num{
       font-family: var(--mono);
-      font-size: clamp(1.6rem, 2.2vw + .5rem, 2.4rem);
-      font-weight: 780;
-      letter-spacing:.02em;
+      font-size: clamp(2.2rem, 5vw, 4.2rem);
+      letter-spacing: .08em;
+      font-weight: 850;
+      margin: 14px 0 4px;
+      position:relative;
     }
-    .lab{
-      margin-top:6px;
-      font-size:.86rem;
-      color: rgba(255,255,255,.72);
-      letter-spacing:.10em;
-      text-transform: uppercase;
-    }
-    .note{
-      margin-top: 14px;
-      color: rgba(255,255,255,.72);
-      font-size: .95rem;
-      line-height: 1.45;
+    .timerLabel{
+      color: rgba(255,255,255,.75);
+      text-transform: lowercase;
+      letter-spacing:.04em;
+      margin: 0 0 14px;
+      position:relative;
     }
 
-    .btnRow{margin-top:18px; display:flex; gap:12px; flex-wrap:wrap;}
+    .quick{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top: 10px;
+      position:relative;
+    }
     .btn{
-      cursor:pointer;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.16);
-      padding:12px 14px;
-      background: rgba(255,255,255,.06);
-      color: rgba(255,255,255,.88);
-      text-decoration:none;
       display:inline-flex;
       align-items:center;
       gap:10px;
-      box-shadow:0 16px 38px rgba(0,0,0,.22);
+      padding: 10px 14px;
+      border-radius: 999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.04);
+      color: rgba(255,255,255,.88);
       transition: transform .15s ease, background .15s ease, border-color .15s ease;
     }
-    .btn:hover{transform:translateY(-1px); background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.22)}
-    .btn.primary{border-color: rgba(242,193,78,.35); background: rgba(242,193,78,.10);}
+    .btn:hover{
+      transform: translateY(-1px);
+      background: rgba(255,255,255,.07);
+      border-color: rgba(255,255,255,.18);
+    }
+    .btn.primary{
+      border-color: rgba(242,193,78,.30);
+      background: rgba(242,193,78,.08);
+    }
 
-    .mini{font-size:.92rem; color: rgba(255,255,255,.70); margin-top:10px;}
-    footer{
+    .section{
       margin-top: 18px;
-      display:flex;
-      justify-content:space-between;
-      flex-wrap:wrap;
-      gap:10px;
-      color: rgba(255,255,255,.55);
-      font-size: .92rem;
-      padding: 0 8px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius: var(--r);
+      box-shadow: 0 14px 45px rgba(0,0,0,.35);
+      padding: 18px;
+    }
+    .section h2{
+      margin:0 0 12px;
+      font-size: 1.15rem;
+      letter-spacing:.08em;
+      text-transform:uppercase;
     }
 
-    @media (max-width: 900px){
-      .topbar{flex-direction:column; align-items:flex-start;}
-      .grid{grid-template-columns:1fr;}
-      .right{border-left:0; border-top:1px solid rgba(255,255,255,.10);}
-      .left,.right{padding:26px;}
-      .timer{grid-template-columns: repeat(4, minmax(0, 1fr));}
+    .tabs{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom: 12px;
     }
+    .tab{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.03);
+      color: rgba(255,255,255,.85);
+      cursor:pointer;
+      user-select:none;
+      font-size:.95rem;
+    }
+    .tab.active{
+      border-color: rgba(242,193,78,.30);
+      background: rgba(242,193,78,.08);
+    }
+
+    .scheduleWrap{
+      border-radius: 14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(0,0,0,.16);
+      overflow:hidden;
+    }
+    .scheduleHeader{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:12px 12px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      color: rgba(255,255,255,.78);
+      font-size:.95rem;
+    }
+    .scheduleBody{
+      padding: 12px;
+      color: rgba(255,255,255,.84);
+      line-height: 1.6;
+    }
+    .item{
+      display:flex;
+      gap:12px;
+      padding:10px 0;
+      border-bottom: 1px dashed rgba(255,255,255,.10);
+    }
+    .item:last-child{border-bottom:0}
+    .time{
+      font-family: var(--mono);
+      color: rgba(255,255,255,.78);
+      min-width: 140px;
+    }
+    .desc .name{font-weight:700}
+    .desc .meta{color: rgba(255,255,255,.65); font-size:.95rem}
+
+    footer{
+      margin-top: 16px;
+      text-align:center;
+      color: rgba(255,255,255,.55);
+      padding: 10px 0 0;
+      font-size:.95rem;
+    }
+
     @media (max-width: 520px){
-      .timer{grid-template-columns: repeat(2, minmax(0, 1fr));}
+      .time{min-width: 96px}
+      .title{font-size:1.8rem}
     }
-    code{font-family:var(--mono); font-size:.92em; color: rgba(255,255,255,.82)}
   </style>
 </head>
-
 <body>
   <div class="bg" aria-hidden="true"></div>
-  <div class="grain" aria-hidden="true"></div>
 
-  <div class="wrap">
-    <div class="container">
+  <div class="wrap" id="home">
+    <div class="top">
+      <div class="brand">
+        <span class="liveDot" aria-hidden="true"></span>
+        <span>LIVE</span>
+      </div>
 
-      <div class="topbar">
-        <div class="badge">
-          <img src="wvsu-csic-logo.png" alt="WVSU CyberSecurity Innovation Center logo">
-          <div>
-            <div class="t1">West Virginia State University</div>
-            <div class="t2">CyberSecurity Innovation Center</div>
+      <nav>
+        <a class="navLink" href="#home">Home</a>
+        <a class="navLink" href="#faq">FAQ</a>
+        <a class="navLink" href="#resources">Resources</a>
+        <a class="navLink" href="#badges">Badges</a>
+        <a class="navLink" href="#qr">QR</a>
+        <a class="navLink" href="https://example.com/devpost" target="_blank" rel="noreferrer">Devpost</a>
+      </nav>
+    </div>
+
+    <section class="hero" aria-label="HackHive Live Countdown">
+      <div class="logoRow">
+        <img src="wvsu-csic-logo.png" alt="WVSU CSIC logo">
+      </div>
+
+      <div class="title">HackHive</div>
+      <p class="subtitle">
+        <strong>MS-CC Environmental Science Hackathon</strong> • <strong>Apr 3–4</strong> • On campus @ <strong>WVSU</strong><br/>
+        Theme: <strong>Securing Air Quality Data in Distributed Sensor Networks</strong>
+      </p>
+
+      <div class="timer" id="timer">00:00:00:00</div>
+      <div class="timerLabel" id="timerLabel">until hacking begins</div>
+
+      <div class="quick">
+        <a class="btn primary" href="https://example.com/devpost" target="_blank" rel="noreferrer">Devpost →</a>
+        <a class="btn" href="#faq">FAQs →</a>
+        <a class="btn" href="#resources">Resources →</a>
+        <a class="btn" href="#qr">QR →</a>
+      </div>
+    </section>
+
+    <section class="section" id="schedule">
+      <h2>Schedule</h2>
+
+      <div class="tabs" role="tablist" aria-label="Schedule view">
+        <div class="tab active" role="tab" aria-selected="true" tabindex="0" data-view="list">List</div>
+        <div class="tab" role="tab" aria-selected="false" tabindex="0" data-view="calendar">Calendar</div>
+      </div>
+
+      <div class="scheduleWrap">
+        <div class="scheduleHeader">
+          <div id="scheduleTitle">Upcoming</div>
+          <div style="display:flex; gap:10px; align-items:center;">
+            <span style="color: rgba(255,255,255,.60);" id="tzLine"></span>
+            <a class="btn" style="padding:7px 10px; font-size:.92rem;" href="#" id="toggleUpcoming">Upcoming</a>
+            <a class="btn" style="padding:7px 10px; font-size:.92rem;" href="#" id="togglePrevious">Previous</a>
           </div>
         </div>
 
-        <div class="livechip" title="Countdown is set to New York City time (America/New_York).">
-          <span class="dot" aria-hidden="true"></span>
-          <span><strong>Countdown</strong> • NYC time</span>
+        <div class="scheduleBody" id="scheduleBody">
+          <!-- Populated by JS -->
         </div>
       </div>
+    </section>
 
-      <main class="card">
-        <div class="grid">
-          <section class="left">
-            <div class="hiveRow">
-              <h1 class="hive">Hack<span>Hive</span></h1>
-              <div class="kicker">Apr <strong>3–4</strong> • On campus @ <strong>WVSU</strong></div>
-            </div>
+    <section class="section" id="faq">
+      <h2>FAQ</h2>
+      <div style="color: rgba(255,255,255,.78); line-height:1.65;">
+        <p><strong>Where is it?</strong> WVSU campus (Institute, WV).</p>
+        <p><strong>What’s the theme?</strong> Securing Air Quality Data in Distributed Sensor Networks.</p>
+        <p><strong>Who can attend?</strong> Students/teams (edit this section with your official rules).</p>
+      </div>
+    </section>
 
-            <p class="tagline">
-              <strong>MS-CC Environmental Science Hackathon</strong><br/>
-              Theme: <strong>Securing Air Quality Data in Distributed Sensor Networks</strong>.
-              Build tools, pipelines, and safeguards that keep environmental data trusted — from sensor to decision.
-            </p>
+    <section class="section" id="resources">
+      <h2>Resources</h2>
+      <div style="display:flex; flex-wrap:wrap; gap:10px;">
+        <a class="btn" href="https://ms-cc.org/ms-cc-hackathon-at-west-virginia-state-university/" target="_blank" rel="noreferrer">MS-CC Event Page →</a>
+        <a class="btn" href="#" onclick="alert('Add your Discord/Slack link here'); return false;">Discord/Slack →</a>
+        <a class="btn" href="#" onclick="alert('Add your dataset/repo link here'); return false;">Dataset/Repo →</a>
+      </div>
+    </section>
 
-            <div class="pills">
-              <div class="pill">📍 WVSU Campus • Institute, WV</div>
-              <div class="pill">🗓️ April 3–4</div>
-              <div class="pill">🛡️ Security × Air Quality</div>
-            </div>
+    <section class="section" id="badges">
+      <h2>Badges</h2>
+      <div style="color: rgba(255,255,255,.78); line-height:1.65;">
+        Add badge links or live status cards here (ex: “Submitted”, “Mentor Helped”, “Workshop Attended”).
+      </div>
+    </section>
 
-            <div class="btnRow">
-              <a class="btn primary" href="#" id="copyBtn">Copy kickoff time</a>
-              <a class="btn" href="#" id="localBtn">Show in my timezone</a>
-            </div>
-            <div class="mini" id="line" aria-live="polite"></div>
+    <section class="section" id="qr">
+      <h2>QR</h2>
+      <div style="color: rgba(255,255,255,.78); line-height:1.65;">
+        Put a QR code image here (registration / Wi-Fi / Discord / Devpost).<br/>
+        Example: <code>&lt;img src="qr.png" style="max-width:220px;border-radius:16px;border:1px solid rgba(255,255,255,.12);" /&gt;</code>
+      </div>
+    </section>
 
-            <div class="mini" style="margin-top:14px;">
-              Tip: edit <code>TARGET_ISO</code> in the script if you want a different kickoff hour.
-            </div>
-          </section>
-
-          <aside class="right">
-            <div class="timerTitle">Kickoff begins in</div>
-            <div class="timer" role="timer" aria-live="polite">
-              <div class="box"><div class="num" id="dd">—</div><div class="lab">Days</div></div>
-              <div class="box"><div class="num" id="hh">—</div><div class="lab">Hours</div></div>
-              <div class="box"><div class="num" id="mm">—</div><div class="lab">Minutes</div></div>
-              <div class="box"><div class="num" id="ss">—</div><div class="lab">Seconds</div></div>
-            </div>
-
-            <div class="note" id="note">
-              Target: <strong>Apr 3, 7:00 AM</strong> (America/New_York).
-            </div>
-          </aside>
-        </div>
-      </main>
-
-      <footer>
-        <div>© <span id="year"></span> HackHive • WVSU</div>
-        <div>Made with care</div>
-      </footer>
-
-    </div>
+    <footer>
+      Made with ❤️ by the HackHive team • <span id="year"></span>
+    </footer>
   </div>
 
   <script>
     // =============================
-    // CONFIG (NYC time)
+    // 1) COUNTDOWN CONFIG (NYC time)
     // =============================
-    // Kickoff time: Apr 3, 7:00 AM in New York City.
+    // Set START and END. Update year as needed.
     // Early April is typically EDT (UTC-4) => -04:00
-    // If you change to a winter month, you may need -05:00.
-    const TARGET_ISO = "2026-04-03T07:00:00-04:00";
+    const HACKING_START_ISO = "2026-04-03T07:00:00-04:00"; // kickoff/start
+    const HACKING_END_ISO   = "2026-04-04T19:00:00-04:00"; // example end (change!)
 
+    // =============================
+    // 2) SCHEDULE DATA (edit!)
+    // =============================
+    // Times below are shown as plain text. You can also add ISO times if you want auto-formatting.
+    const SCHEDULE_UPCOMING = [
+      { time: "Fri 7:00 AM",  name: "Kickoff / Check-in", meta: "Welcome + logistics (WVSU campus)" },
+      { time: "Fri 9:00 AM",  name: "Team Formation",     meta: "Find teammates + idea pitching" },
+      { time: "Fri 10:30 AM", name: "Workshop",           meta: "Securing sensor data pipelines" },
+      { time: "Fri 12:00 PM", name: "Lunch",              meta: "Food + networking" },
+      { time: "Sat 1:00 PM",  name: "Project Demos",      meta: "Show what you built" },
+      { time: "Sat 3:00 PM",  name: "Judging + Awards",   meta: "Winners announced" },
+    ];
+
+    const SCHEDULE_PREVIOUS = [
+      { time: "—", name: "Nothing yet", meta: "Previous items appear after the event starts." }
+    ];
+
+    // =============================
+    // Utilities
+    // =============================
     const $ = (id) => document.getElementById(id);
     const pad2 = (n) => String(n).padStart(2, "0");
 
-    function formatInTZ(date, timeZone){
+    function diffParts(ms){
+      const t = Math.max(0, ms);
+      const totalSec = Math.floor(t / 1000);
+      const days = Math.floor(totalSec / 86400);
+      const hours = Math.floor((totalSec % 86400) / 3600);
+      const minutes = Math.floor((totalSec % 3600) / 60);
+      const seconds = totalSec % 60;
+      return { days, hours, minutes, seconds };
+    }
+
+    function fmtTimer({days, hours, minutes, seconds}){
+      // TreeHacks style: DD:HH:MM:SS
+      return `${pad2(days)}:${pad2(hours)}:${pad2(minutes)}:${pad2(seconds)}`;
+    }
+
+    function renderSchedule(items){
+      const body = $("scheduleBody");
+      body.innerHTML = items.map(x => `
+        <div class="item">
+          <div class="time">${x.time}</div>
+          <div class="desc">
+            <div class="name">${x.name}</div>
+            <div class="meta">${x.meta || ""}</div>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    // =============================
+    // Countdown logic: shows "until hacking begins" then switches to "until hacking ends"
+    // =============================
+    const start = new Date(HACKING_START_ISO);
+    const end   = new Date(HACKING_END_ISO);
+
+    function formatNYC(date){
       return new Intl.DateTimeFormat("en-US", {
-        timeZone,
+        timeZone: "America/New_York",
         weekday: "short",
-        year: "numeric",
         month: "short",
         day: "2-digit",
         hour: "numeric",
@@ -359,68 +445,85 @@
       }).format(date);
     }
 
-    function diffParts(ms){
-      const t = Math.max(0, ms);
-      const sec = Math.floor(t / 1000);
-      const days = Math.floor(sec / 86400);
-      const hours = Math.floor((sec % 86400) / 3600);
-      const minutes = Math.floor((sec % 3600) / 60);
-      const seconds = sec % 60;
-      return {days, hours, minutes, seconds};
-    }
-
-    const target = new Date(TARGET_ISO);
-    const kickoffNYC = formatInTZ(target, "America/New_York");
-
-    $("year").textContent = new Date().getFullYear();
-    $("line").textContent = "Kickoff (NYC): " + kickoffNYC;
-
     function tick(){
       const now = new Date();
-      const remaining = target.getTime() - now.getTime();
+      const nowMs = now.getTime();
+      const startMs = start.getTime();
+      const endMs = end.getTime();
 
-      if (remaining <= 0){
-        $("dd").textContent = "00";
-        $("hh").textContent = "00";
-        $("mm").textContent = "00";
-        $("ss").textContent = "00";
-        $("note").innerHTML = "🚀 <strong>We’re live!</strong> HackHive kickoff is happening now.";
+      let target, label;
+
+      if (nowMs < startMs){
+        target = startMs;
+        label = "until hacking begins";
+      } else if (nowMs < endMs){
+        target = endMs;
+        label = "until hacking ends";
+      } else {
+        $("timer").textContent = "00:00:00:00";
+        $("timerLabel").textContent = "hacking has ended";
         return;
       }
 
-      const {days, hours, minutes, seconds} = diffParts(remaining);
-      $("dd").textContent = pad2(days);
-      $("hh").textContent = pad2(hours);
-      $("mm").textContent = pad2(minutes);
-      $("ss").textContent = pad2(seconds);
-
-      $("note").innerHTML =
-        "Target: <strong>Apr 3, 7:00 AM</strong> (America/New_York).<br/>" +
-        "<span style='color: rgba(255,255,255,.64);'>Kickoff (NYC): " + kickoffNYC + "</span>";
+      $("timerLabel").textContent = label;
+      const parts = diffParts(target - nowMs);
+      $("timer").textContent = fmtTimer(parts);
     }
 
+    // =============================
+    // Tabs (List/Calendar)
+    // =============================
+    const tabs = document.querySelectorAll(".tab");
+    tabs.forEach(t => t.addEventListener("click", () => setTab(t.dataset.view)));
+    tabs.forEach(t => t.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); setTab(t.dataset.view); }
+    }));
+
+    function setTab(view){
+      tabs.forEach(t => t.classList.toggle("active", t.dataset.view === view));
+
+      if (view === "calendar"){
+        $("scheduleBody").innerHTML = `
+          <div style="color: rgba(255,255,255,.75); line-height:1.7;">
+            <strong>Calendar view placeholder</strong><br/>
+            If you have a Google Calendar, paste an embed iframe here.
+            <div style="margin-top:10px; padding:12px; border:1px solid rgba(255,255,255,.10); border-radius:14px; background:rgba(0,0,0,.16);">
+              <code>&lt;iframe src="YOUR_CALENDAR_EMBED_URL" style="width:100%;height:520px;border:0;"&gt;&lt;/iframe&gt;</code>
+            </div>
+          </div>
+        `;
+      } else {
+        renderSchedule(currentMode === "upcoming" ? SCHEDULE_UPCOMING : SCHEDULE_PREVIOUS);
+      }
+    }
+
+    // =============================
+    // Upcoming/Previous toggles
+    // =============================
+    let currentMode = "upcoming";
+    $("toggleUpcoming").addEventListener("click", (e) => {
+      e.preventDefault();
+      currentMode = "upcoming";
+      $("scheduleTitle").textContent = "Upcoming";
+      if (document.querySelector(".tab.active").dataset.view === "list") renderSchedule(SCHEDULE_UPCOMING);
+    });
+    $("togglePrevious").addEventListener("click", (e) => {
+      e.preventDefault();
+      currentMode = "previous";
+      $("scheduleTitle").textContent = "Previous";
+      if (document.querySelector(".tab.active").dataset.view === "list") renderSchedule(SCHEDULE_PREVIOUS);
+    });
+
+    // =============================
+    // Init
+    // =============================
+    $("year").textContent = new Date().getFullYear();
+    $("tzLine").textContent = "NYC: " + formatNYC(start);
+
+    renderSchedule(SCHEDULE_UPCOMING);
+    setTab("list");
     tick();
     setInterval(tick, 1000);
-
-    $("copyBtn").addEventListener("click", async (e) => {
-      e.preventDefault();
-      const text = "HackHive kickoff: " + kickoffNYC + " (America/New_York)";
-      try{
-        await navigator.clipboard.writeText(text);
-        $("line").textContent = "Copied ✅ " + text;
-      }catch{
-        $("line").textContent = "Copy failed. " + text;
-      }
-    });
-
-    $("localBtn").addEventListener("click", (e) => {
-      e.preventDefault();
-      const local = new Intl.DateTimeFormat("en-US", {
-        weekday:"short", year:"numeric", month:"short", day:"2-digit",
-        hour:"numeric", minute:"2-digit", hour12:true, timeZoneName:"short"
-      }).format(target);
-      $("line").textContent = "Kickoff (your time): " + local;
-    });
   </script>
 </body>
 </html>

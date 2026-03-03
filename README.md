@@ -1,1 +1,1 @@
-# LiveShortX2
+# LiveShortX2 for hackathon
